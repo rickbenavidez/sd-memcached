@@ -37,7 +37,7 @@ class Memcached:
 
 		# Memory Usgae
 		stats['limit_maxbytes'] = int(re.search("limit_maxbytes (\d+)", out).group(1))
-		stats['bytes'] = int(re.search("bytes (\d+)", out).group(1))
+		stats['bytes'] = int(re.search("\sbytes (\d+)", out).group(1))
 
 		# Network Traffic
 		stats['bytes_read'] = int(re.search("bytes_read (\d+)", out).group(1))
@@ -61,6 +61,5 @@ class Memcached:
 
 		# Evictions
 		stats['evictions'] = int(re.search("evictions (\d+)", out).group(1))
-		stats['reclaimed'] = int(re.search("reclaimed (\d+)", out).group(1))
 
 		return stats
